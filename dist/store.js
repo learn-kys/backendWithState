@@ -1,10 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.gameManager = void 0;
+exports.GameManager = void 0;
 class GameManager {
     constructor() {
         this.games = [];
         this.games = [];
+    }
+    static getInstance() {
+        if (!this.instance) {
+            this.instance = new GameManager();
+        }
+        return this.instance;
     }
     addMove(gameId, move) {
         console.log(`Adding move ${move} to game ${gameId}`);
@@ -24,4 +30,4 @@ class GameManager {
         console.log(this.games);
     }
 }
-exports.gameManager = new GameManager();
+exports.GameManager = GameManager;
