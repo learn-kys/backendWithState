@@ -1,13 +1,8 @@
-import { game } from "./store";
 import { startLogger } from "./logger";
+import { gameManager } from "./store";
 
 startLogger();
 
 setInterval(() => {
-  game.push({
-    id: Math.random().toString(),
-    whitePlayerName: "Alice",
-    blackPlayerName: "Bob",
-    moves: [],
-  });
+  gameManager.addGame(Math.random().toString());
 }, 5000);
