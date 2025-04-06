@@ -5,10 +5,20 @@ interface IGame {
   moves: string[];
 }
 
-class GameManager {
+export class GameManager {
   games: IGame[] = [];
-  constructor() {
+  private static instance: GameManager;
+
+  private constructor() {
     this.games = [];
+  }
+
+  static getInstance() {
+    if (!this.instance) {
+      this.instance = new GameManager();
+    }
+
+    return this.instance;
   }
 
   addMove(gameId: string, move: string) {
@@ -31,5 +41,3 @@ class GameManager {
     console.log(this.games);
   }
 }
-
-export const gameManager = new GameManager();
